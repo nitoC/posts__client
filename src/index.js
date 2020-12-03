@@ -9,8 +9,7 @@ import actions from "./actions/actions";
 import thunk from "redux-thunk";
 import {useEffect} from "react";
 import {useSelector} from "react-redux"
-import Form from "./components/form";
-import Post from "./components/post";
+
 
 const middleware=store=>next=>action=>{
   console.log(action)
@@ -33,12 +32,7 @@ function Npp() {
   
 ReactDOM.render(
   <Provider store={store}>
-    <div>
     <App/>
-    <Npp/>
-    <Form/>
-    <Post/>
-    </div>
     
     </Provider>,
   document.getElementById('root')

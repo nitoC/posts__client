@@ -3,21 +3,24 @@ import FileBase from "react-file-base64";
 import {useState} from "react";
 import actions from "../actions/actions";
 import {useDispatch,useSelector} from "react-redux";
+import Posts from "./post";
 
 const FormData=()=>{
+   
     const dispatch=useDispatch();
-    const [postData,setPost]=useState({creator:'',title:'',message:'',tags:[],file:''})
+    const [postData,setPost]=useState({creator:'',title:'',message:'',tags:[],file:'',like:0})
     const handleSubmit=(e)=>{
           e.preventDefault();
           dispatch(actions.post(postData));
           console.log(postData)
 
     }
+    
     return(
         <>
         <Paper className="Contain">
             <form>
-                <Typography className="margin" variant="h3" align="center">Post Message</Typography>
+                <Typography className="margin" variant="h5" align="center">Post Message</Typography>
               <TextField className="margin" name="creator" variant="outlined" label="creator" fullWidth onChange={e=>setPost({...postData,creator:e.target.value})}/>
               <TextField className="margin" name="title" variant="outlined" label="title" fullWidth onChange={e=>setPost({...postData,title:e.target.value})}/>
               <TextField className="margin" name="message" variant="outlined" label="message" fullWidth onChange={e=>setPost({...postData,message:e.target.value})}/>
