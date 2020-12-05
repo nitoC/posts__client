@@ -11,12 +11,13 @@ import actions from "../actions/actions";
 import {useState, useEffect} from "react"
 
 
-var clickLike=false;
+
 
 const Cards = ({post}) => {  
 const dispatch=useDispatch();
 var [currentId,setCurrentId]=useState(null)
    const disp={display:'none'}
+   var clickLike=false;
 const [color,setColor]=useState({color:"#555"})
 const [displayC,setDisplay]=useState({display:"none"})
     const likeFunc=()=>{
