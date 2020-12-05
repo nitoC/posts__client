@@ -22,8 +22,7 @@ const [displayC,setDisplay]=useState({display:"none"})
     const likeFunc=()=>{
         
         if(clickLike==false){
-            clickLike=true;
-            console.log(post._id)   
+            clickLike=true;   
             dispatch(actions.like(post._id))
         }
         else{
@@ -31,16 +30,13 @@ const [displayC,setDisplay]=useState({display:"none"})
         }
     }
     useEffect(()=>{
-        console.log(currentId)
         
     },[currentId,post])
     const displ=()=>{
     if(JSON.stringify(displayC)===JSON.stringify({display:"none"})){
-        console.log("first color")
            setDisplay({display:"block"})
         }
         else{
-            console.log("second color")
             setDisplay({display:"none"})
         }
     }

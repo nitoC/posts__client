@@ -2,18 +2,14 @@ import { CardContent } from "@material-ui/core";
 import apiData from "../api/api";
 
  const post=(createData)=>async (dispatch,getState)=>{
-     console.log('about to')
     try{
-        console.log(createData)
         const {data}=await apiData.postData(createData);
-        console.log(data._id)
         dispatch({type:"POST",payload:data})
            }catch(err){console.log(err.message)}
 }
 const update=(data,id)=> async(dispatch,getState)=>{
     try{
     const {data}=await apiData.updateData(data,id)
-    console.log(data)
     dispatch({type:"UPDATE",payload:data})
     }catch(err){
         console.log(err)
