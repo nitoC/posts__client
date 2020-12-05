@@ -41,6 +41,10 @@ box-sizing: border-box;
     text-align:center;
     font-family: Arial, Helvetica, sans-serif;
 }
+.loike{
+   
+    width:20px;
+}
 .card{
     position:relative;
     width:300px;

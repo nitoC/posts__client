@@ -10,9 +10,9 @@ import apiData from "../api/api";
         dispatch({type:"POST",payload:data})
            }catch(err){console.log(err.message)}
 }
-const update=(updateData,id)=> async(dispatch,getState)=>{
+const update=(data,id)=> async(dispatch,getState)=>{
     try{
-    const {data}=await apiData.updateData(updateData,id)
+    const {data}=await apiData.updateData(data,id)
     console.log(data)
     dispatch({type:"UPDATE",payload:data})
     }catch(err){
@@ -20,26 +20,23 @@ const update=(updateData,id)=> async(dispatch,getState)=>{
     }
 }
 
-const deleteAction=(deleteData,id)=> async(dispatch,getState)=>{
+const deleteAction=(id)=> async(dispatch,getState)=>{
     try{
-    const {data}= await apiData.deleteData(deleteData,id)
+    const {data}= await apiData.deleteData(id)
     dispatch({type:"DELETE",payload:data})
     }catch(err){
         CardContent.log(err)
     }
 
 }
-const like=(likeData,id)=>async(dispatch,getState)=>{
+const like=(id)=>async(dispatch,getState)=>{
     try{
-        console.log("in like")
-        console.log(id)
-        const {data}=await apiData.likePost(likeData,id)
-        console.log("dispatchinglike")
+        const {data}=await apiData.likePost(id)
         dispatch({type:"LIKE",payload:data})
-        console.log(data.like)
+        
     }catch(err){
         console.log(err)
-    }
+    };
 }
 const actions= {
 

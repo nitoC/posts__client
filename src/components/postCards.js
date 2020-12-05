@@ -8,29 +8,32 @@ import {CircularProgress} from "@material-ui/core"
 import moment from "moment";
 import apiData from "../api/api";
 import actions from "../actions/actions";
-import {useState} from "react"
+import {useState, useEffect} from "react"
 
 
 var clickLike=false;
 
 const Cards = ({post}) => {  
 const dispatch=useDispatch();
-   const id=post._id;
-   var disp={display:'none'}
+var [currentId,setCurrentId]=useState(null)
+   const disp={display:'none'}
 const [color,setColor]=useState({color:"#555"})
 const [displayC,setDisplay]=useState({display:"none"})
     const likeFunc=()=>{
+        
         if(clickLike==false){
             clickLike=true;
-console.log(id)
-            dispatch(actions.like(post,id))
-           
+            console.log(post._id)   
+            dispatch(actions.like(post._id))
         }
         else{
-            clickLike=false;
             return;
         }
     }
+    useEffect(()=>{
+        console.log(currentId)
+        
+    },[currentId,post])
     const displ=()=>{
     if(JSON.stringify(displayC)===JSON.stringify({display:"none"})){
         console.log("first color")
@@ -42,7 +45,8 @@ console.log(id)
         }
     }
     const deleteFunc=()=>{
-            dispatch(actions.deleteAction(post,id))
+        
+            dispatch(actions.deleteAction(post._id))
            
     }
     return ( 
@@ -69,7 +73,7 @@ console.log(id)
                     <Button variant="secondary" color="primary" onClick={likeFunc}>
                         <ThumbUpAltIcon style={post.like>0?{color:"#40e0d0"}:{color:"#555"}} fontSize="small"/> Like
                     </Button>
-                    <span>{post=>post.like<=0?'':post.like}</span>
+                    <div className="loike" style={{color:"blue"}}>{post.like<=0?'':post.like}</div>
                     <Button onClick={deleteFunc}>
                         <DeleteIcon  style={{color:"red"}} fontSize="small"/> Delete
                     </Button>

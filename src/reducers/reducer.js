@@ -1,16 +1,15 @@
 
 const posts=[];
 const update=(data,action)=>{
-data.map(p=> p._id===action.payload.id?action.payload.id:p._id)
+data.map(p=> p._id===action.payload._id?action.payload:p)
 }
 const like=(data,action)=>{
     return data.map(p=> {
-        console.log(p._id +" "+action.payload._id)
-       return p._id===action.payload._id?action.payload._id:p._id
+       return p._id===action.payload._id?action.payload:p
     })
     }
     const deleteData=(data,action)=>{
-         return data.filter(p=>p._id!==action.payload.id)
+         return data.filter(p=>p._id!==action.payload._id)
     }
 const Reducer= (state=posts,action)=>{
     switch(action.type){
